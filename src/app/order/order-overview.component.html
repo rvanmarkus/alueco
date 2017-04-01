@@ -8,5 +8,6 @@
   rowHeight="auto"
   headerHeight="50"
   columnMode="force"
-  [columns]="columns">
+  [columns]="columns"
+  [loadingIndicator]="!($orders | async)">
 </ngx-datatable>
