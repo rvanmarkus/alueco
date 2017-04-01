@@ -1,0 +1,12 @@
+<h3>Lopende leveringen</h3>
+<!--<ul>-->
+<!--<li *ngFor="let order of ($orders | async)"> {{order.material.materialType}} - {{order.material.quality}} <b>{{order.orderLocation.city}}</b></li>-->
+<!--</ul>-->
+<ngx-datatable
+  class="material"
+  [rows]="orders"
+  rowHeight="auto"
+  headerHeight="50"
+  columnMode="force"
+  [columns]="columns">
+</ngx-datatable>

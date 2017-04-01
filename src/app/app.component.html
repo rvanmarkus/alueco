@@ -1,3 +1,36 @@
-<h1>
-  {{title}}
-</h1>
+
+<md-sidenav-container>
+  <md-sidenav #start (open)="closeStartButton.focus()">
+    Start Sidenav.
+    <br>
+    <button md-button #closeStartButton (click)="start.close()">Close</button>
+  </md-sidenav>
+  <md-toolbar [color]="accent">
+    <button md-icon-button (click)="start.open()"><md-icon>menu</md-icon></button>
+    <button md-icon-button [routerLink]="['/']"><md-icon>home</md-icon></button>
+    <span style="margin-left: 15px; flex: 1 1 auto;">Alueco Material Management</span>
+    <button md-button [routerLink]="['/orders/overview']"><md-icon style="margin-top:5px; float:left;">list</md-icon>Order overview</button>
+    <button md-icon-button [routerLink]="['/orders']"><md-icon>local_shipping</md-icon></button>
+  </md-toolbar>
+  <main style="min-height:90vh;">
+    <router-outlet></router-outlet>
+  </main>
+
+</md-sidenav-container>
+<!--<footer>-->
+  <!--© 2016-->
+<!--</footer>-->
+
+<!--<nav>-->
+	<!--<button md-button >-->
+    <!--Home-->
+  <!--</button>-->
+  <!--|-->
+	<!--<a [routerLink]="['$orders']">-->
+    <!--New order-->
+  <!--</a>-->
+  <!--|-->
+	<!--<a [routerLink]="['/github', 'angular']">-->
+    <!--Github Repos-->
+  <!--</a>-->
+<!--</nav>-->

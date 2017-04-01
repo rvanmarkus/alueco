@@ -1,0 +1,97 @@
+
+<form (ngSubmit)="onSubmit()" [formGroup]="orderForm">
+<md-card>
+  <div label="Inzamelpartner" sublabel="Selecteer een van uw Alueco Inzamelpartners">
+    <md-card-title>Inzamelpartner</md-card-title>
+    <div class="row">
+      <!--<a-autocomplete-->
+      <!--[items]="$partnerAutocompleteItems | async"-->
+      <!--(onSelect)="partnerSelectionChanged($event)"-->
+      <!--class="col-xs-6"></a-autocomplete>-->
+      <!--<md-select placeholder="Vestiging" [(ngModel)]="order.orderLocation" name="Vestiging">-->
+      <!--<md-option *ngFor="let food of foods" [value]="food.value">-->
+      <!--{{food.viewValue}}-->
+      <!--</md-option>-->
+      <!--</md-select>-->
+      <md-input-container>
+        <input type="text" mdInput [mdAutocomplete]="partnerAutocomplete" name="partner" placeholder="Kies uw inzamelpartner" formControlName="partner">
+      </md-input-container>
+      <md-autocomplete #partnerAutocomplete="mdAutocomplete" [displayWith]="displayFn">
+        <md-option *ngFor="let partner of ($partners | async)" [value]="partner">
+          {{ partner?.bedrijfsnaam}}
+        </md-option>
+      </md-autocomplete>
+
+    </div>
+
+
+  </div>
+</md-card>
+
+  <br>
+  <md-card>
+    <button md-button (click)="end.open()">Open details pane</button>
+    <md-card-title>Container</md-card-title>
+    <div>
+      <label>Type container:</label> <br>
+      <!--<md-radio-group>-->
+        <!--<md-radio-button value="option_1">1</md-radio-button>-->
+        <!--<md-radio-button value="option_2">2</md-radio-button>-->
+      <!--</md-radio-group>-->
+      <md-radio-group formControlName="container" [(ngModel)]="selectedContainerType">
+      <md-radio-button *ngFor="let type of ($containerTypes | async)" [value]="type" style="margin-left: 15px;">
+      {{type}} container
+      </md-radio-button>
+      </md-radio-group>
+      <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+        <md-card *ngFor="let container of ($containers | async | containerType: selectedContainerType)" style="margin:10px;">
+
+          <md-card-header>
+            <md-card-title>{{container.naam}}</md-card-title>
+            <md-card-subtitle><strong>Inhoud: </strong>{{container.inhoud}}m3 </md-card-subtitle>
+            <img md-card-avatar src="/assets/container.png" style="border: 2px solid #90b731; width:40px;">
+          </md-card-header>
+          <md-card-actions align="end">
+            <md-button-toggle (change)="containerSelectionChanged($event, container)" (click)="end.open()">{{container.selected? 'Verwijderen' : 'Toevoegen'}}</md-button-toggle>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+  </md-card>
+  <br>
+  <md-card>
+    <md-card-title>Leveringsadres</md-card-title>
+
+  </md-card>
+  <br>
+  <md-card>
+    <md-card-title>Gewenste leveringsdatum</md-card-title>
+    <div class="row">
+      <div class="col-xs-3">
+        <!--<my-date-picker (dateChanged)="onDateChanged($event)"></my-date-picker>-->
+      </div>
+      <div class="col-xs-3">
+        <md-input-container>
+          <input mdInput placeholder="Gewenste aflevertijd" value="11:00"/>
+        </md-input-container>
+      </div>
+    </div>
+    <md-card-actions>
+      <button md-button>SAVE AND ORDER</button>
+      <button md-button [routerLink]="['/']">CANCEL</button>
+    </md-card-actions>
+  </md-card>
+</form>
+<md-sidenav #end align="end" mode="side">
+  <md-list>
+    <md-list-item *ngFor="let container of order?.containers">
+      <md-input-container>
+        <input mdInput type="number" value="1" style="float:left; width:50px;"/>
+      </md-input-container>
+      <h4 md-line>{{container.naam}}</h4>
+      <p md-line class="demo-2"> {{container.inhoud}}m3</p>
+    </md-list-item>
+
+  </md-list>
+  <button md-button (click)="end.close()">Close</button>
+</md-sidenav>
