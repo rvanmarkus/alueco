@@ -1,0 +1,31 @@
+.mat-sidenav {
+  width:300px;
+
+  h3 {
+    color: rgba(0,0,0,.86);
+    .mat-icon {
+      vertical-align: middle;
+      margin-right:5px;
+    }
+  }
+
+  .logo {
+    width:100%;
+    max-width: 240px;
+    margin:30px 30px 15px 30px;
+
+  }
+
+  nav ul {
+    padding-left:10px;
+    .mat-button {
+      width:100%;
+      font-size:16px;
+
+    }
+    li {
+      margin-left:-10px;
+      list-style-type: none;
+    }
+  }
+}
