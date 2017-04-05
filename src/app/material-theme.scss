@@ -1,5 +1,6 @@
 // Plus imports for other components in your app.
-@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.scss';
+//@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.scss';
+@import '~@angular/material/core/theming/all-theme';
 @import '~@angular/material/core/_core.scss';
 body {
   font-family: 'Roboto', sans-serif;
@@ -16,3 +17,16 @@ body {
   margin: 0;
   position: relative;
 }
+
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-light-green);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);

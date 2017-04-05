@@ -8,13 +8,13 @@
           Containers
         </h3>
         <li>
-          <button md-button>
+          <button md-button routerLink="/containers/bestellen" ng-click="">
             <md-icon>add_circle_outline</md-icon>
             Bestellen
           </button>
         </li>
         <li>
-          <button md-button>
+          <button md-button routerLink="/containers/overzicht">
             <md-icon>list</md-icon>
             Overzicht
           </button>
@@ -28,7 +28,7 @@
 
     <button md-button #closeStartButton (click)="start.close()">Close</button>
   </md-sidenav>
-  <md-toolbar [color]="accent">
+  <md-toolbar color="primary">
     <button md-icon-button (click)="start.open()">
       <md-icon>menu</md-icon>
     </button>
