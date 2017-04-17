@@ -1,16 +1,19 @@
 <md-toolbar color="accent">
   <span style="margin-left: 15px; flex: 1 1 auto;">Container overzicht</span>
 </md-toolbar>
-<h3>Lopende leveringen</h3>
-<!--<ul>-->
-<!--<li *ngFor="let order of ($orders | async)"> {{order.material.materialType}} - {{order.material.quality}} <b>{{order.orderLocation.city}}</b></li>-->
-<!--</ul>-->
-<ngx-datatable
-  class="material"
-  [rows]="orders"
-  rowHeight="auto"
-  headerHeight="50"
-  columnMode="force"
-  [columns]="columns"
-  [loadingIndicator]="!($orders | async)">
-</ngx-datatable>
+<div class="main-content">
+  <h3>Lopende leveringen</h3>
+  <!--<ul>-->
+  <!--<li *ngFor="let order of ($orders | async)"> {{order.material.materialType}} - {{order.material.quality}} <b>{{order.orderLocation.city}}</b></li>-->
+  <!--</ul>-->
+  <ngx-datatable
+    class="material"
+    [rows]="orders"
+    rowHeight="auto"
+    headerHeight="50"
+    columnMode="force"
+    [columns]="columns"
+    [loadingIndicator]="!($orders | async)">
+  </ngx-datatable>
+</div>
+

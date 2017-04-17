@@ -9,5 +9,5 @@ export interface AluecoPartnerVestiging {
 }
 export interface AluecoPartner {
   bedrijfsnaam?: string;
-  Vestigingen? : AluecoPartnerVestiging[];
+  Vestigingen?;
 }

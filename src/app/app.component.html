@@ -8,13 +8,13 @@
           Containers
         </h3>
         <li>
-          <button md-button routerLink="/containers/bestellen" ng-click="">
+          <button md-button routerLink="/containers/bestellen" (click)="start.close()">
             <md-icon>add_circle_outline</md-icon>
             Bestellen
           </button>
         </li>
         <li>
-          <button md-button routerLink="/containers/overzicht">
+          <button md-button routerLink="/containers/overzicht" (click)="start.close()">
             <md-icon>list</md-icon>
             Overzicht
           </button>
@@ -36,12 +36,12 @@
       <md-icon>home</md-icon>
     </button>
     <span style="margin-left: 15px; flex: 1 1 auto;">Alueco Material Management</span>
-    <button md-button [routerLink]="['/orders/overview']">
-      <md-icon style="margin-top:5px; float:left;">list</md-icon>
-      Order overview
-    </button>
-    <button md-icon-button [routerLink]="['/orders']">
-      <md-icon>local_shipping</md-icon>
+    <!--<button md-button [routerLink]="['/orders/overview']">-->
+      <!--<md-icon style="margin-top:5px; float:left;">list</md-icon>-->
+      <!--Order overview-->
+    <!--</button>-->
+    <button md-icon-button>
+      <md-icon>info</md-icon>
     </button>
   </md-toolbar>
   <main style="min-height:90vh;">
