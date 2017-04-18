@@ -20,6 +20,7 @@ import {AngularFireModule} from "angularfire2";
 import {OrderService} from "./services/order-service";
 import {LoginPageComponent} from "./login/login-page.component";
 import {AuthService} from "./services/auth-service";
+import {ProfileNavigationComponent} from "./profile/profile-navigation.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {AuthService} from "./services/auth-service";
     OrderOverviewComponent,
     AluecoOrderFormComponent,
     ContainersTypePipe,
-    LoginPageComponent
+    LoginPageComponent,
+    ProfileNavigationComponent
   ],
   imports: [
     BrowserModule,

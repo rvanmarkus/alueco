@@ -7,34 +7,22 @@ import {
   FirebaseListObservable, FirebaseObjectObservable
 } from "angularfire2";
 import {FormControl, FormGroup} from "@angular/forms";
+import {AluecoUser} from "../../domain/user";
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 @Injectable()
 export class AuthService {
-  private users: FirebaseListObservable<any[]>;
+  // private users: FirebaseListObservable<any[]>;
   public auth: AngularFireAuth;
-  public displayName: string;
-  public email: string;
-  private user: FirebaseObjectObservable<any>;
-  public loginForm: FormGroup;
+  public user: Observable<AluecoUser>;
+  private userSubscription: Subscription;
 
   constructor(private af: AngularFire) {
     this.auth = af.auth;
-    this.auth.subscribe(
-      (auth) => {
-        if (auth != null) {
-          this.user = this.af.database.object('users/' + auth.uid);
-          if(auth.google) {
-            this.displayName = auth.google.displayName;
-            this.email = auth.google.email;
-          }
-          else {
-            this.displayName = auth.auth.email;
-            this.email = auth.auth.email;
-          }
-        }
-
-      });
-    this.users = this.af.database.list('users');
+    this.user = this.auth
+      .filter(auth => auth !== null)
+      .map(auth => AluecoUser.fromAuthSession(auth));
   }
 
   loginWithGoogle(): firebase.Promise<FirebaseAuthState> {
@@ -57,10 +45,10 @@ export class AuthService {
 
   addUserInfo(){
     //We saved their auth info now save the rest to the db.
-    this.users.push({
-      email: this.email,
-      displayName: this.displayName
-    });
+    // this.users.push({
+    //   email: this.email,
+    //   displayName: this.displayName
+    // });
   }
 
   logout() {

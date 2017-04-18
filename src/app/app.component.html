@@ -1,6 +1,9 @@
 <md-sidenav-container>
   <md-sidenav #start (open)="closeStartButton.focus()">
     <img src="/assets/logo.svg" alt="Logo" class="logo">
+    <profile-navigation>
+
+    </profile-navigation>
     <nav [hidden]="!isLoggedIn">
       <ul>
         <h3>

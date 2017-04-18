@@ -1,0 +1,24 @@
+<nav class="profile">
+  <img src="{{profileImage}}" alt="{{displayName}}">
+  <div class="profile-content">
+    <h1>{{($loggedInUser | async)?.displayName}}</h1>
+    <h3>{{($loggedInUser | async)?.email}}</h3>
+  </div>
+  <button md-icon-button [mdMenuTriggerFor]="menu">
+    <md-icon>more_vert</md-icon>
+  </button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item>
+      <md-icon>account_circle</md-icon>
+      <span>Mijn FacEco account</span>
+    </button>
+    <button md-menu-item (click)="logout()">
+      <md-icon>exit_to_app</md-icon>
+      <span>Uitloggen</span>
+    </button>
+    <!--<button md-menu-item disabled>-->
+      <!--<md-icon>notifications_off</md-icon>-->
+      <!--<span>Notificatie instellingen</span>-->
+    <!--</button>-->
+  </md-menu>
+</nav>
