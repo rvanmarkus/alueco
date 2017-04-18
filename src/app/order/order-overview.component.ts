@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
-import {OrderService} from "./order-service";
+import {OrderService} from "../services/order-service";
 import {Observable} from "rxjs";
 import {AluecoOrder} from "./order";
 

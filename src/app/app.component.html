@@ -1,7 +1,7 @@
 <md-sidenav-container>
   <md-sidenav #start (open)="closeStartButton.focus()">
     <img src="/assets/logo.svg" alt="Logo" class="logo">
-    <nav>
+    <nav [hidden]="!isLoggedIn">
       <ul>
         <h3>
           <md-icon>local_shipping</md-icon>

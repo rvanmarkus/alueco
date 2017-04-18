@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="main-content">
+  <md-card>
+    <md-input-container>
+      <input type="text" formControlName="email" mdInput placeholder="Uw e-mail"/>
+    </md-input-container>
+    <md-input-container>
+      <input type="password" formControlName="password" mdInput placeholder="Uw wachtwoord"/>
+    </md-input-container>
+    <button md-raised-button color="accent">Aanmelden</button>
+  </md-card>
+
+</form>

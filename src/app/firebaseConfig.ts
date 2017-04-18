@@ -6,7 +6,7 @@ export const firebaseConfig = {
   storageBucket: "alueco-860c4.appspot.com",
   messagingSenderId: "609203336747"
 };
-export const myFirebaseAuthConfig = {
+export const firebaseAuthConfig = {
   provider: AuthProviders.Google,
   method: AuthMethods.Redirect
 };

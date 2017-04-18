@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFire} from "angularfire2";
-import {AluecoOrder} from "./order";
+import {AluecoOrder} from "../order/order";
 import {Observable} from "rxjs";
 
 @Injectable()

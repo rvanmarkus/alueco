@@ -15,16 +15,19 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {AluecoOrderFormComponent} from "./order/alueco-order-form.component";
 import {OrderOverviewComponent} from "./order/order-overview.component";
 import {ContainersTypePipe} from "./order/ContainersTypePipe";
-import {firebaseConfig} from "./firebaseConfig";
+import {firebaseAuthConfig, firebaseConfig} from "./firebaseConfig";
 import {AngularFireModule} from "angularfire2";
-import {OrderService} from "./order/order-service";
+import {OrderService} from "./services/order-service";
+import {LoginPageComponent} from "./login/login-page.component";
+import {AuthService} from "./services/auth-service";
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderOverviewComponent,
     AluecoOrderFormComponent,
-    ContainersTypePipe
+    ContainersTypePipe,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +36,10 @@ import {OrderService} from "./order/order-service";
     MaterialModule,
     ReactiveFormsModule,
     NgxDatatableModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [OrderService],
+  providers: [OrderService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
